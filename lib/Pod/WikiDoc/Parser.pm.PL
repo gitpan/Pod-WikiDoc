@@ -5,7 +5,7 @@ use File::pushd;
 use Parse::RecDescent;
 
 use vars qw( $VERSION );
-$VERSION = "0.11";
+$VERSION = "0.12";
 
 # Load Text::Balanced into Parse::RecDescent
 package Parse::RecDescent;
@@ -37,7 +37,7 @@ my ($target_dir) = $ARGV[0] =~ m{ \A ( .+ )  / .+ \z }xms;
 my $version_text = <<"END_VERSION";
 \n
 use vars qw( \$VERSION );
-\$VERSION = "0.11";
+\$VERSION = "0.12";
 
 END_VERSION
 
@@ -66,7 +66,7 @@ Pod::WikiDoc::Parser is a precompiled [Parse::RecDescent] parser for use with
 from a grammar included with the distribution.  
 
 A copy of the [Parse::RecDescent] grammar used is appended to the
-Pod::WikiDoc::Parser source and this Pod files for reference or reuse by
+Pod::WikiDoc::Parser source and this Pod file for reference or reuse by
 others.
 
 = USAGE

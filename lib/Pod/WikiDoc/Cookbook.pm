@@ -2,7 +2,7 @@ package Pod::WikiDoc::Cookbook;
 # Not really a .pm file, but holds wikidoc which will be
 # turned into .pod by the Build.PL
 use vars '$VERSION';
-$VERSION = "0.11";
+$VERSION = "0.12";
 1;
 __END__
 
@@ -25,7 +25,7 @@ or to integrate [Pod::WikiDoc] with other tools.
 
 === Vim
 
-Using vim, use the {comments} and {formatoptions} settings in {.vimrc} to
+In vim, use the {comments} and {formatoptions} settings in {.vimrc} to
 have vim automatically insert the wikidoc comment leader when pressing
 return from a wikidoc comment line.  For example, the following lines in a 
 {.vimrc} file will activate this option whenever a perl-ish file is loaded.
@@ -49,15 +49,20 @@ the MANIFEST
 * ACTION_distdir -- adds a dependency on the {wikidoc} action to regenerate
 .pod files before bundling up a distribution
 
-By making wikidoc extraction part of the {distdir} action, users installing
-the distribution will receive it with .pod files already created, and will 
-not need to have [Pod::WikiDoc] installed themselves.
+By making wikidoc extraction part of the {distdir} action, users installing the
+distribution will receive it with .pod files already created, and will not need
+to have [Pod::WikiDoc] installed themselves.  Note: this subclassing can't be
+emulated in a "traditional" {Makefile.PL} as created by [Module::Build::Compat]
+using the {create_makefile} option in [Module::Build].  As the "passthrough"
+style is also problematic for some users, I recommend leaving off any
+{Makefile.PL} and using {Build.PL} only.
 
+    # Build.PL
     use Module::Build;
 
     my $class = Module::Build->subclass(
         class => "Module::Build::WikiDoc",
-        code => <<'SUBCLASS',
+        code => <<'SUBCLASS' );
 
         sub ACTION_wikidoc {
             my $self = shift;
@@ -94,8 +99,7 @@ not need to have [Pod::WikiDoc] installed themselves.
         }
 
     SUBCLASS
-    );
-                
+
     $class->new( 
         # regular Module::Build options
     )->create_build_script;
