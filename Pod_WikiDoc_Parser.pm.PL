@@ -1,11 +1,12 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use File::Basename;
 use File::pushd;
 use Parse::RecDescent;
 
 use vars qw( $VERSION );
-$VERSION = "0.12";
+$VERSION = "0.13";
 
 # Load Text::Balanced into Parse::RecDescent
 package Parse::RecDescent;
@@ -18,7 +19,7 @@ my $grammar = do { local $/; <DATA> };
 
 # Find target directory
 
-my ($target_dir) = $ARGV[0] =~ m{ \A ( .+ )  / .+ \z }xms;
+my ($target_dir) = dirname($ARGV[0]);
 
 {
     # Temporarily change to target directory since PRD Precompile writes to
@@ -37,7 +38,7 @@ my ($target_dir) = $ARGV[0] =~ m{ \A ( .+ )  / .+ \z }xms;
 my $version_text = <<"END_VERSION";
 \n
 use vars qw( \$VERSION );
-\$VERSION = "0.12";
+\$VERSION = "0.13";
 
 END_VERSION
 
@@ -62,16 +63,16 @@ Pod::WikiDoc::Parser -- precompiled recursive descent parser for Pod::WikiDoc
 = DESCRIPTION
 
 Pod::WikiDoc::Parser is a precompiled [Parse::RecDescent] parser for use with
-[Pod::WikiDoc].  It is generated dynamically on installation of [Pod::WikiDoc]
+[Pod::WikiDoc].  It is generated dynamically on installation of Pod::WikiDoc
 from a grammar included with the distribution.  
 
-A copy of the [Parse::RecDescent] grammar used is appended to the
+A copy of the Parse::RecDescent grammar used is appended to the
 Pod::WikiDoc::Parser source and this Pod file for reference or reuse by
 others.
 
 = USAGE
 
-This module is a support module for [Pod::WikiDoc] and is not intended for
+This module is a support module for Pod::WikiDoc and is not intended for
 general use.  Given a string containing WikiDoc markup text, the parser
 produces a data structure representing the parsed content.  The data structure
 returned is an array of references to hashes.  Keys in the hash are:
@@ -86,16 +87,16 @@ See [Pod::WikiDoc] for details of the markup.
 
 There are numerous Perl wikitext parsers, formatters or translators, some of
 which were instructive in designing this parser.  All the ones I could find are
-included below for reference for those interested in the topic.
+included below for reference for those interested in the topic:
 
-* [CGI::Wiki::Formatter]
-* [Convert::Wiki]
-* [HTML::WikiConverter]
-* [Kwiki::Formatter]
-* [Pod::TikiWiki]
-* [PurpleWiki::Parser::WikiText]
-* [Template::Plugin::KwikiFormat]
-* [Text::WikiFormat]
+* CGI::Wiki::Formatter
+* Convert::Wiki
+* HTML::WikiConverter
+* Kwiki::Formatter
+* Pod::TikiWiki
+* PurpleWiki::Parser::WikiText
+* Template::Plugin::KwikiFormat
+* Text::WikiFormat
 
 = AUTHOR
 

@@ -1,8 +1,9 @@
 package Pod::WikiDoc::Cookbook;
 # Not really a .pm file, but holds wikidoc which will be
 # turned into .pod by the Build.PL
+use strict; # make CPANTS happy
 use vars '$VERSION';
-$VERSION = "0.12";
+$VERSION = "0.13";
 1;
 __END__
 

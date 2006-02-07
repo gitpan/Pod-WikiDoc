@@ -32,11 +32,33 @@ my $class = Module::Build->subclass(
         $self->SUPER::ACTION_testpod;
     }
 
+    sub ACTION_build_parser {
+        my $self = shift;
+        my $parserfile = 'lib/Pod/WikiDoc/Parser.pm';
+        $self->run_perl_script('Pod_WikiDoc_Parser.pm.PL', [],
+                               [$parserfile] );
+        $self->_add_to_manifest( 'MANIFEST', $parserfile );
+    }
+
     sub ACTION_distdir {
         my $self = shift;
+        $self->depends_on('build_parser');
         $self->depends_on('wikidoc');
         $self->SUPER::ACTION_distdir;
     }
+
+#    sub ACTION_distmeta {
+#        my $self = shift;
+#        $self->meta_merge( 
+#            provides => {
+#                'Pod::WikiDoc::Parser' => {
+#                    file => 'lib/Pod/WikiDoc/Parser.pm',
+#                    version => $self->dist_version,
+#                },
+#            },
+#        );
+#        $self->SUPER::ACTION_distmeta;
+#    }
 
 SUBCLASS
             
@@ -46,18 +68,24 @@ $class->new(
     dist_abstract       => 'Generate Pod from inline wiki style text',
     license             => 'perl',
     create_readme       => 0,
+#    PL_files            => {
+#        'Pod_WikiDoc_Parser.pm.PL' => 'lib/Pod/WikiDoc/Parser.pm',
+#    },
+#    add_to_cleanup      => [
+#        'lib/Pod/WikiDoc/Parser.pod',
+#    ],
     requires        => {
         File::Find          => 1,       #build_requires
-        File::pushd         => 0.20,    #build_requires
+        File::pushd         => 0.30,    #build_requires
         File::Spec          => 3,       #build_requires 
-        File::Temp          => 0.16,    #build_requires
+        File::Temp          => 0.14,    #build_requires
         Getopt::Long        => 2.17,
         IO::String          => 1.06,
-        IPC::Run3           => "0.020", #build_requires
+        IPC::Run3           => 0.033,   #build_requires
         Parse::RecDescent   => 1.94,
         Pod::Usage          => 1,
         Scalar::Util        => 1.02,
-        Test::More          => 0.48,    #build_requires
+        Test::More          => 0.45,    #build_requires
         Text::Balanced      => 1.95,
     },
 )->create_build_script;
