@@ -6,7 +6,7 @@ use File::pushd;
 use Parse::RecDescent;
 
 use vars qw( $VERSION );
-$VERSION = "0.15";
+$VERSION = "0.16";
 
 # Load Text::Balanced into Parse::RecDescent
 package Parse::RecDescent;
@@ -131,6 +131,12 @@ if ( $fh ) {
     print $fh "\n\n=begin grammar\n\n", $grammar, "\n\n=end grammar\n\n";
     close $fh;
 }
+
+exit;
+
+#--------------------------------------------------------------------------#
+# parser grammer is kept in __DATA__
+#--------------------------------------------------------------------------#
 
 __DATA__
     { use Text::Balanced qw( extract_tagged ) }
@@ -282,6 +288,8 @@ __DATA__
                 { $return = $item[1] }
         |   KeyWord
                 { $return = $item[1] }
+        |   Parens
+                { $return = $item[1] }
         |   RegularText
                 { $return = $item[1] }
 
@@ -340,6 +348,17 @@ __DATA__
                     $return = { 
                         type    => $item[0],
                         content => $item[1] . $item[2]
+                    }
+                }
+
+    Parens:
+            { extract_bracketed( $text, '(' ) }
+                { 
+                    $return = { 
+                        type    => $item[0],
+                        content => $thisparser->Inline(
+                            substr( substr( $item[1], 1), 0, -1 )
+                        ),
                     }
                 }
 

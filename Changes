@@ -1,5 +1,9 @@
 Revision history for Perl module Pod::WikiDoc
 
+0.16 Mon Dec  4 10:18:48 EST 2006
+    - added support for parsing inside parentheses (~foo~)
+    - fixed dependency lists in Makefile.PL and removed from Pod
+    
 0.15 Sun Jun 11 01:25:20 EDT 2006
     - fixed up version numbering across generated modules
     

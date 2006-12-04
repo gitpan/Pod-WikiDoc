@@ -2,7 +2,7 @@ package Pod::WikiDoc;
 use strict;
 use warnings;
 use vars qw($VERSION );
-$VERSION     = "0.15";
+$VERSION     = "0.16";
 
 use 5.006;
 use Carp;
@@ -435,6 +435,7 @@ my %opening_of = (
     Indented_Line       =>  q{ },
     Plain_Line          =>  q{},
     Empty_Line          =>  q{ },
+    Parens              =>  "(",
     RegularText         =>  q{},
     EscapedChar         =>  q{},
     WhiteSpace          =>  q{},
@@ -460,6 +461,7 @@ my %closing_of = (
     Indented_Line       =>  "\n",
     Plain_Line          =>  "\n",
     Empty_Line          =>  "\n",
+    Parens              =>  ")",
     RegularText         =>  q{},
     EscapedChar         =>  q{},
     WhiteSpace          =>  q{},
@@ -724,16 +726,6 @@ unchanged.
 * {Error: Couldn't open output file 'FILENAME'}
 * {Error: 'input' parameter for filter() must be a filename or filehandle}
 * {Error: 'output' parameter for filter() must be a filename or filehandle}
-    
-= DEPENDENCIES
-
-Pod::WikiDoc and the 'wikidoc' script depend on the following modules:
-* [Getopt::Long]
-* [IO::String]
-* [Parse::RecDescent]
-* [Pod::Usage]
-* [Scalar::Util]
-* [Text::Balanced]
 
 = INCOMPATIBILITIES
 
@@ -742,7 +734,7 @@ Pod::WikiDoc and the 'wikidoc' script depend on the following modules:
 Pod::WikiDoc or the level of 'smartness' in [Smart::Comments] to avoid the
 conflict.
 
-* Module::Build (as of 0.27_02) does not look in external {.pod} files 
+* Module::Build before 0.28 does not look in external {.pod} files 
 to generate a {README} with the {create_readme} option or to find a module 
 abstract.  Set the abstract manually in the {Build.PL} file with the
 {dist_abstract} option.
@@ -750,8 +742,7 @@ abstract.  Set the abstract manually in the {Build.PL} file with the
 = BUGS
 
 Please report bugs or feature requests using the CPAN Request Tracker.
-Bugs can be sent by email to {bug-Pod-WikiDoc@rt.cpan.org} or
-submitted using the web interface at
+Bugs can be submitted using the web interface at
 [http://rt.cpan.org/Public/Dist/Display.html?Name=Pod-WikiDoc]
 
 When submitting a bug or request, please include a test-file or a patch to an
