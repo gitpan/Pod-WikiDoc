@@ -43,10 +43,9 @@ t/60-convert_wikidoc_comments.t
 t/61-convert_alt_length_comments.t
 t/70-wikidoc-script.t
 t/71-wikidoc_with_define.t
-t/98-pod.t
-t/99-pod-coverage.t
 t/Casefiles.pm
 t/CLI.pm
+t/contributed/rt29604-other-formats.t
 t/filter_comments/001_filtering_only_doc_comments
 t/filter_comments/002_filtering_code_and_doc_comments
 t/filter_comments/003_filtering_pod_with_doc_comments
@@ -63,6 +62,9 @@ t/filter_pod/005_filtering_only_for_wikidoc
 t/filter_pod/006_filtering_pod_and_code
 t/filter_pod/007_filtering_pod_with_wikidoc
 t/filter_pod/008_filtering_pod_and_wikidoc_no_sharpdoc
+t/filter_pod/009_filtering_nested_formats
+t/filter_pod/010_filtering_nested_format_w_markup
+t/filter_pod/011_filtering_multi_level_nested_format
 t/wiki2pod/bold_markup/001_simple_bold_tag_in_paragraph
 t/wiki2pod/bold_markup/002_multi_line_bold_tag_in_paragraph
 t/wiki2pod/bold_markup/003_asterisk_in_words
@@ -129,3 +131,7 @@ t/wiki2pod/paragraphs/003_blank_lines
 t/wiki2pod/paragraphs/004_multi_line_w_parens
 t/wiki2pod/paragraphs/005_multi_line_w_embedded_parens
 Todo
+xt/10-pod.t
+xt/11-pod-coverage.t
+xt/20-perl-critic.t
+xt/perlcriticrc
