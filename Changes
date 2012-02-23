@@ -1,5 +1,12 @@
 Revision history for Perl module Pod::WikiDoc
 
+0.19      2012-02-23 12:19:36 EST5EDT
+
+    - attempted to fix problems caused by incompatible changes
+      in Parse::RecDescent breaking pre-compiled parsers
+
+    - converted distribution to Dist::Zilla management
+
 0.18 Sun Sep 30 13:10:12 EDT 2007
 
     - rewrote Pod/wikidoc filtering; added support for nested formats

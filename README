@@ -2,7 +2,7 @@ NAME
     Pod::WikiDoc - Generate Pod from inline wiki style text
 
 VERSION
-    This documentation refers to version 0.18.
+    version 0.19
 
 SYNOPSIS
     In a source file, Pod format-block style:
@@ -25,7 +25,7 @@ SYNOPSIS
          0 numbered
          0 list
  
-         = end wikidoc
+         =end wikidoc
 
     In a source file, wikidoc comment-block style:
 
@@ -37,11 +37,11 @@ SYNOPSIS
     Generate Pod from wikidoc, programmatically:
 
          use Pod::WikiDoc;
-         my $parser = Pod::WikiDoc->new( { 
+         my $parser = Pod::WikiDoc->new( {
              comment_blocks => 1,
              keywords => { KEYWORD => "foo" },
          } );
-         $parser->filter( 
+         $parser->filter(
              { input => "my_module.pm", output => "my_module.pod" }
          );
 
@@ -193,7 +193,7 @@ WIKIDOC MARKUP
     Verbatim text is indicated with leading whitespace in each line of text,
     just as with Pod.
 
-         #<--- first column 
+         #<--- first column
  
              sub verbatim {}
 
@@ -260,7 +260,7 @@ WIKIDOC MARKUP
     Pod-style escape text is passed through as normal to support
     international or other unusual characters.
 
-         This is the euro symbol: E<euro> 
+         This is the euro symbol: E<euro>
 
   Keyword markup
     Text surrounded by double-percent signs is treated as a keyword for
@@ -303,32 +303,27 @@ INCOMPATIBILITIES
         module abstract. Set the abstract manually in the "Build.PL" file
         with the "dist_abstract" option.
 
-BUGS
-    Please report bugs or feature requests using the CPAN Request Tracker.
-    Bugs can be submitted using the web interface at
-    <http://rt.cpan.org/Public/Dist/Display.html?Name=Pod-WikiDoc>
+SUPPORT
+  Bugs / Feature Requests
+    Please report any bugs or feature requests through the issue tracker at
+    <http://rt.cpan.org/Public/Dist/Display.html?Name=Pod-WikiDoc>. You will
+    be notified automatically of any progress on your issue.
 
-    When submitting a bug or request, please include a test-file or a patch
-    to an existing test-file that illustrates the bug or desired feature.
+  Source Code
+    This is open source software. The code repository is available for
+    public review and contribution under the terms of the license.
+
+    <https://github.com/dagolden/pod-wikidoc>
+
+      git clone https://github.com/dagolden/pod-wikidoc.git
 
 AUTHOR
-    David A. Golden (DAGOLDEN)
+    David A Golden <dagolden@cpan.org>
 
 COPYRIGHT AND LICENSE
-    Copyright (c) 2005, 2006, 2007 by David A. Golden
+    This software is Copyright (c) 2012 by David A Golden.
 
-    Licensed under the Apache License, Version 2.0 (the "License"); you may
-    not use this file except in compliance with the License. You may obtain
-    a copy of the License at <http://www.apache.org/licenses/LICENSE-2.0>
+    This is free software, licensed under:
 
-    Files produced as output though the use of this software, including
-    generated copies of boilerplate templates provided with this software,
-    shall not be considered Derivative Works, but shall be considered the
-    original work of the Licensor.
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+      The Apache License, Version 2.0, January 2004
 
