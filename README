@@ -2,7 +2,7 @@ NAME
     Pod::WikiDoc - Generate Pod from inline wiki style text
 
 VERSION
-    version 0.19
+    version 0.20
 
 SYNOPSIS
     In a source file, Pod format-block style:

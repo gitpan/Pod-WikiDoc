@@ -3,7 +3,7 @@ use strict;
 use warnings;
 # PODNAME: wikidoc
 # ABSTRACT: convert mixed Pod and wikidoc text to Pod
-our $VERSION = '0.19'; # VERSION
+our $VERSION = '0.20'; # VERSION
 
 $main::VERSION ||= '999';
 
@@ -82,7 +82,7 @@ wikidoc - convert mixed Pod and wikidoc text to Pod
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 SYNOPSIS
 

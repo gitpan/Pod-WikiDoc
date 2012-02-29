@@ -2,7 +2,7 @@ package Pod::WikiDoc;
 use strict;
 use warnings;
 # ABSTRACT: Generate Pod from inline wiki style text
-our $VERSION = '0.19'; # VERSION
+our $VERSION = '0.20'; # VERSION
 
 $Pod::WikiDoc::VERSION ||= '999';
 
@@ -599,7 +599,7 @@ Pod::WikiDoc - Generate Pod from inline wiki style text
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 SYNOPSIS
 
